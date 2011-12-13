@@ -55,7 +55,7 @@ module ActiveUUID
       serialize :id, ActiveUUID::UUIDSerializer.new
       
       def generate_uuid_if_needed
-        generate_uuid unless self.id
+        generate_uuid if self.id.nil? or self.id.nil_uuid?
       end
 
       def to_param
