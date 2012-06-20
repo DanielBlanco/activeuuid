@@ -18,6 +18,11 @@ end
 
 module Arel
   module Visitors
+    class ToSql < Arel::Visitors::Visitor
+      def visit_UUIDTools_UUID(o)
+        o.quoted_id
+      end
+    end
     class DepthFirst < Arel::Visitors::Visitor
       def visit_UUIDTools_UUID(o)
         o.quoted_id
