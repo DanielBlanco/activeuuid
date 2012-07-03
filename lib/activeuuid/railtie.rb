@@ -13,6 +13,13 @@ module ActiveUUID
             column_names.each { |name| column(name, 'binary(16)', options) }
           end                                                                     
         end
+        class TableDefinition
+          def uuid (*args)
+            options = args.extract_options!
+            column_names = args
+            column_names.each { |name| column(name, 'binary(16)', options) }
+          end                                                                     
+        end
       end
 
     end
